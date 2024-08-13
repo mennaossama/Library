@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="model"
+            type="com.example.navigation.Model" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:cardElevation="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_book"
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:layout_margin="@dimen/margin_10"
+                android:layout_marginStart="@dimen/margin_16"
+                android:scaleType="centerCrop"
+                app:imageResource="@{model.img}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/iv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10"
+                android:text='@{model.title}'
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/button"
+                app:layout_constraintStart_toEndOf="@id/iv_book"
+                app:layout_constraintTop_toTopOf="@+id/iv_book" />
+
+            <TextView
+                android:id="@+id/iv_author"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text='@{"by " + model.author}'
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                  android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="@id/iv_title"
+                app:layout_constraintStart_toStartOf="@+id/iv_title"
+                app:layout_constraintTop_toBottomOf="@id/iv_title" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/orange"
+                android:text="@string/wanttoread"
+                android:textColor="@color/white"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toStartOf="@+id/close"
+                app:layout_constraintTop_toTopOf="@+id/iv_title" />
+
+            <RatingBar
+                android:id="@+id/book_rating"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:progressBackgroundTint="@color/grey"
+                android:progressTint="#ffff8800"
+                android:rating="@{model.rate}"
+                android:stepSize="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/button"
+                app:layout_constraintStart_toStartOf="@+id/button"
+                app:layout_constraintTop_toBottomOf="@+id/button" />
+
+            <Button
+                android:id="@+id/close"
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:drawableRight="@drawable/close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/button"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
